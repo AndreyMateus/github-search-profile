@@ -12,11 +12,11 @@
 
 **API UTILIZADA**
 
-[api.github.com/users/nameuser](api.github.com/users/nameuser)
+[api.github.com/users/nameuser](https://api.github.com/users/nameuser)
 
 ---
 
-### Acessando o Projeto Online: [Clique aqui](https://feedpostagens.netlify.app/)
+### Acessando o Projeto Online: [Clique aqui](https://searchprofileingithub.netlify.app/)
 
 ---
 

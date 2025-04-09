@@ -38,7 +38,7 @@ export function InputSearchProfile({ stateInput, setStateInput, placeHolder, set
         setStateLoading(true);
 
         // Validação básica antes do ENVIO (caso o REQUIRED seja removido via INSPETOR).
-        if (inputTextNameOfUser.length <= 1) {
+        if (inputTextNameOfUser.length < 1) {
             setStateLoading(false);
             setIsValidContent(false);
             return;

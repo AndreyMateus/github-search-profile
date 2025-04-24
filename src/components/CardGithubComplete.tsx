@@ -26,7 +26,6 @@ export function CardGitbhubComplete({ setLearnMoreCardState, name, bio, avatar_u
 
     useEffect(() => {
         setRepositoriesFiltered(repositories);
-        console.log("tes");
     }, [repositories]);
 
     return (

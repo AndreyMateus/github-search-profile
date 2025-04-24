@@ -108,6 +108,7 @@ function App() {
             setStateInput={setInputTextNameOfUser}
             setUserProfileGithub={setUserProfileGithub}
             setStateLoading={setIsLoading}
+            setRepositories={setRepositories}
           />
 
           {isLoading ? <Loading darkMode={darkMode} /> : ""}

@@ -21,6 +21,7 @@ interface InputSearchProfileProps {
     setStateLoading: (isLoading: boolean) => void,
     setStateInput: (textOfInput: string) => void;
     setUserProfileGithub: (githubProfile: GithubProfile) => void;
+    setRepositories: () => void;
 }
 
 function validationUserNameGithub(nameOfUser: string): string {
@@ -31,7 +32,7 @@ function validationUserNameGithub(nameOfUser: string): string {
     return validatedUsernameOfGithub?.join('');
 }
 
-export function InputSearchProfile({ stateInput, setStateInput, placeHolder, setUserProfileGithub, setStateLoading, ...props }: InputSearchProfileProps) {
+export function InputSearchProfile({ stateInput, setStateInput, placeHolder, setUserProfileGithub, setStateLoading, setRepositories, ...props }: InputSearchProfileProps) {
     const [isValidContent, setIsValidContent] = useState(true);
 
     async function getUserProfileGithub(inputTextNameOfUser: string) {
@@ -47,7 +48,7 @@ export function InputSearchProfile({ stateInput, setStateInput, placeHolder, set
         try {
             const response = await fetch(`https://api.github.com/users/${inputTextNameOfUser}`);
 
-            console.clear();
+            // console.clear();
 
             const responseToJson = await response.json();
 
@@ -61,6 +62,10 @@ export function InputSearchProfile({ stateInput, setStateInput, placeHolder, set
             setStateLoading(false);
             setUserProfileGithub(responseToJson);
             setIsValidContent(true);
+
+            const responseRepositories = await fetch(responseToJson.repos_url);
+            const repositoriesUser = await responseRepositories.json();
+            setRepositories(repositoriesUser);
         } catch (error) {
             console.warn("Um erro ocorreu ao busca seu usuário!");
         }

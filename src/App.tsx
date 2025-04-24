@@ -22,6 +22,8 @@ function App() {
   const [darkMode, setDarkMode] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
+  const [repositories, setRepositories] = useState([]);
+
   if (darkMode) {
     const root = document.querySelector("#root");
     root.style.backgroundColor = "#000";
@@ -53,6 +55,7 @@ function App() {
             setStateInput={setInputTextNameOfUser}
             setUserProfileGithub={setUserProfileGithub}
             setStateLoading={setIsLoading}
+            setRepositories={setRepositories}
           />
 
           {isLoading ? <Loading darkMode={darkMode} /> : ""}
@@ -67,6 +70,7 @@ function App() {
               following={userProfileGithub.following}
               public_repos={userProfileGithub.public_repos}
               repos_url={userProfileGithub.repos_url}
+              repositories={repositories}
             />
             : userProfileGithub.status == "404" ? <ProfileNotFound /> : ""}
 

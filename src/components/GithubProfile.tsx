@@ -1,8 +1,12 @@
-import { RiGitRepositoryLine } from "react-icons/ri";
 import styles from "./GithubProfile.module.css";
 
 import { GoPeople } from "react-icons/go";
 import { IoLogOutOutline } from "react-icons/io5";
+import { FaInfoCircle } from "react-icons/fa";
+import { RiGitRepositoryLine } from "react-icons/ri";
+
+import { CardGitbhubComplete } from "./CardGithubComplete";
+import { useState, useEffect } from "react";
 
 interface GithubProfileProps {
     name: string,
@@ -15,7 +19,9 @@ interface GithubProfileProps {
     repos_url: string;
 }
 
-export function GithubProfile({ name, bio, avatar_url, html_url, followers, following, public_repos, repos_url }: GithubProfileProps) {
+export function GithubProfile({ name, bio, avatar_url, html_url, followers, following, public_repos, repos_url, repositories }: GithubProfileProps) {
+    const [learnMoreCardState, setLearnMoreCardState] = useState(false);
+
     return (
         <article className={styles.cardProfile}>
             <a href={html_url}
@@ -35,22 +41,43 @@ export function GithubProfile({ name, bio, avatar_url, html_url, followers, foll
                 </div>
 
                 <div className={styles.wrapperInfo}>
-                    <p>
-                        <GoPeople title="Seguindo" /> {following} |
-                    </p>
                     <p title="Seguidores">
-                        Followers: {followers} |
+                        <GoPeople title="Seguidores" /> <span>{followers}</span> followers |
+                    </p>
+                    <p>
+                        <span>{following}</span> following |
                     </p>
                     <p>
                         <RiGitRepositoryLine
                             title="Repositorios"
-                        />{public_repos}
+                        /> <span>{public_repos}</span>
                     </p>
-                    {/* <p>Repos Url {repos_url}</p> */}
                 </div>
-
+                <div className={styles.wrapper}
+                    onClick={() => {
+                        setLearnMoreCardState(true);
+                    }}
+                >
+                    <div>
+                        <p>Saiba mais </p>
+                        <FaInfoCircle size={"2rem"} style={{ color: "white" }} />
+                    </div>
+                </div>
             </div>
 
+            {learnMoreCardState ?
+                <CardGitbhubComplete
+                    setLearnMoreCardState={setLearnMoreCardState}
+                    name={name}
+                    bio={bio}
+                    avatar_url={avatar_url}
+                    html_url={html_url}
+                    followers={followers}
+                    following={following}
+                    public_repos={public_repos}
+                    repos_url={repos_url}
+                    repositories={repositories}
+                /> : ""}
         </article>
     );
 }

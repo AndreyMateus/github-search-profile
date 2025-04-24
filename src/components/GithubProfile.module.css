@@ -5,7 +5,7 @@
     display: flex;
     gap: 1.5rem;
     margin: 0 auto;
-    min-height: 14rem;
+    min-height: 18rem;
     max-width: 50rem;
     margin-bottom: 10px;
     position: relative;
@@ -24,6 +24,7 @@
 }
 
 .profileImg {
+    height: 12rem;
     width: 12rem;
     border-radius: 50%;
     border: 2px solid #005cff;
@@ -33,12 +34,14 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin-bottom: 0.8rem;
 }
 
 .wrapperTitles div h1 {
     margin-bottom: 0.8rem;
     color: #005cff;
     max-width: 98%;
+    position: relative;
 }
 
 .wrapperTitles div h1,
@@ -55,10 +58,60 @@
     border-bottom: 1px solid #000;
 }
 
+.wrapperInfo span {
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 0 3px #000;
+}
+
 .wrapperInfo * {
     cursor: default;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 5px;
+}
+
+.wrapper {
+    position: absolute;
+    left: 67px;
+    bottom: 19px;
+}
+
+.wrapper div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    padding: 0.2rem 0.4rem;
+    border-radius: 12px;
+    gap: 8px;
+    z-index: 1;
+    background: linear-gradient(45deg, #005cff, #005cff, #005cff);
+}
+
+.wrapper p {
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-shadow: 0 0 1px #000;
+}
+
+.wrapper div:hover {
+    cursor: pointer;
+    box-shadow: 0 0 10px #fff;
+}
+
+.wrapper div:hover::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    z-index: -1;
+    background: linear-gradient(45deg,
+            #35353547, #35353547, #35353547, #35353547, #35353547);
+    border-radius: 14px;
+    filter: blur(2px);
 }

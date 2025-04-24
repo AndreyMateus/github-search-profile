@@ -123,6 +123,7 @@ function App() {
               following={userProfileGithub.following}
               public_repos={userProfileGithub.public_repos}
               repos_url={userProfileGithub.repos_url}
+              repositories={repositories}
             />
             : userProfileGithub.status == "404" ? <ProfileNotFound /> : ""}
 
